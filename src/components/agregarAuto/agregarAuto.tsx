@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import apiTP from '../../api/apiTP';
-import { useNavigate } from 'react-router-dom';
+
 
 type AutoDTO = {
   marca: string;
