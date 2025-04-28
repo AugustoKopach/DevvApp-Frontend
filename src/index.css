@@ -1,7 +1,13 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color:  #3C4043;
-    color: white;
-    font-family: sans-serif;
-  }
+  background-image: url('https://media1.tenor.com/m/rw-8cPkxvKgAAAAd/car-maybach.gif');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  flex-direction: row;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  z-index: -1;
+
+}

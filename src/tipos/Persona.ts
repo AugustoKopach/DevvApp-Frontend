@@ -6,7 +6,7 @@ export enum Genero {
   NoBinario = 'No-Binario'
 }
 
-export type Persona = {
+export type PersonaDTO = {
   id: string;
   nombre: string;
   apellido: string;

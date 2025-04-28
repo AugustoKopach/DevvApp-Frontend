@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import apiTP from '../../api/apiTP';
 import { useNavigate } from 'react-router-dom';
+import './listaPersonas.css';
 
 type PersonaResumen = {
   id: string;
@@ -8,12 +9,12 @@ type PersonaResumen = {
   apellido: string;
 };
 
-const PersonasList: React.FC = () => {
+const ListaPersonas: React.FC = () => {
   const [personas, setPersonas] = useState<PersonaResumen[]>([]);
   const navigate = useNavigate();
 
   const cargarPersonas = () => {
-    apiTP.get<PersonaResumen[]>('/personas').then((res) => {
+    apiTP.get<PersonaResumen[]>('/persona').then((res) => {
       setPersonas(res.data);
     });
   };
@@ -23,7 +24,7 @@ const PersonasList: React.FC = () => {
   }, []);
 
   const eliminarPersona = async (id: string) => {
-    if (!confirm('Estas seguro de eliminar esta persona?')) return;
+    if (!confirm('¿Estás seguro de eliminar esta persona?')) return;
     try {
       await apiTP.delete(`/persona/${id}`);
       cargarPersonas();
@@ -38,28 +39,43 @@ const PersonasList: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2>Listado de Personas</h2>
-      <button onClick={() => navigate('/crearPersona')} style={{ margin: '1rem 0' }}>
+    <div className="personas__contenedor">
+      <h2 className="personas__titulo">Listado de Personas</h2>
+      <button
+        className="personas__boton-crear"
+        onClick={() => navigate('/crearPersona')}
+      >
         Agregar persona
       </button>
 
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table className="personas__tabla">
         <thead>
           <tr>
-            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Nombre</th>
-            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Apellido</th>
-            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Acciones</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {personas.map((p) => (
             <tr key={p.id}>
-              <td style={{ border: '1px solid black', padding: '0.5rem' }}>{p.nombre}</td>
-              <td style={{ border: '1px solid black', padding: '0.5rem' }}>{p.apellido}</td>
-              <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                <button onClick={() => editarPersona(p.id)} style={{ marginRight: '0.5rem' }}>Editar</button>
-                <button onClick={() => eliminarPersona(p.id)}>Eliminar</button>
+              <td>{p.nombre}</td>
+              <td>{p.apellido}</td>
+              <td>
+                <div className="personas__acciones">
+                  <button
+                    className="personas__boton personas__boton--editar"
+                    onClick={() => editarPersona(p.id)}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="personas__boton personas__boton--eliminar"
+                    onClick={() => eliminarPersona(p.id)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -69,4 +85,4 @@ const PersonasList: React.FC = () => {
   );
 };
 
-export default PersonasList;
+export default ListaPersonas;

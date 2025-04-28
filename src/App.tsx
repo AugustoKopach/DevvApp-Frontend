@@ -5,7 +5,8 @@ import Home from './components/home';
 import PersonasList from './components/ListaPersonas/listaPersonas';
 import AutosList from './components/listaAutos/listaAutos';
 import AgregarAuto from './components/agregarAuto/agregarAuto';
-import CrearPersona from './components/agregarPersona/crearPersona';
+import CrearPersona from './components/persona/crearPersona';
+import EditarPersona from './components/persona/editarPersona';
 
 const App: React.FC = () => {
   return (
@@ -14,8 +15,9 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/personas" element={<PersonasList />} />
         <Route path="/autos" element={<AutosList />} />
-        <Route path='/agregarAuto' element={<AgregarAuto/> } />
-        <Route path='/crearPersona' element={<CrearPersona/> } />
+        <Route path='/agregarAuto' element={<AgregarAuto />} />
+        <Route path='/crearPersona' element={<CrearPersona />} />
+        <Route path='/editarPersona/:id' element={<EditarPersona />} /> {}
       </Routes>
     </Router>
   );
