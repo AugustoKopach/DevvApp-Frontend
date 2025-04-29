@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PersonaDTO, Genero } from "../tipos/Persona";
+import { PersonaDTO} from "../tipos/Persona";
 import { Auto } from "../tipos/Auto";
 
 export const usePersonaForm = (personaInicial: PersonaDTO) => {

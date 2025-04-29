@@ -15,7 +15,6 @@ interface FormularioPersonaProps {
 
 const FormularioPersona: React.FC<FormularioPersonaProps> = ({
   persona,
-  setPersona,
   handleSubmit,
   handlePersonaChange,
   handleAutoChange,

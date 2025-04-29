@@ -5,6 +5,7 @@ import './listaPersonas.css';
 
 type PersonaResumen = {
   id: string;
+  dni:string;
   nombre: string;
   apellido: string;
 };
@@ -38,6 +39,10 @@ const ListaPersonas: React.FC = () => {
     navigate(`/editarPersona/${id}`);
   };
 
+  const verPersona = (id: string) => {
+    navigate(`/verPersona/${id}`);
+  }
+
   return (
     <div className="personas__contenedor">
       <h2 className="personas__titulo">Listado de Personas</h2>
@@ -53,6 +58,7 @@ const ListaPersonas: React.FC = () => {
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>DNI</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -61,6 +67,7 @@ const ListaPersonas: React.FC = () => {
             <tr key={p.id}>
               <td>{p.nombre}</td>
               <td>{p.apellido}</td>
+              <td>{p.dni}</td>
               <td>
                 <div className="personas__acciones">
                   <button
@@ -74,6 +81,12 @@ const ListaPersonas: React.FC = () => {
                     onClick={() => eliminarPersona(p.id)}
                   >
                     Eliminar
+                  </button>
+                  <button
+                    className="personas__boton personas__boton--ver"
+                    onClick={() => verPersona(p.id)}
+                  >
+                    Ver
                   </button>
                 </div>
               </td>

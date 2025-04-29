@@ -1,8 +1,8 @@
-.personas__contenedor {
+.ver-persona {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     padding: 30px;
     background-color: rgba(23, 23, 23, 0.7);
     backdrop-filter: blur(10px);
@@ -11,33 +11,29 @@
     transition: 0.4s ease-in-out;
   }
 
-  .personas__contenedor:hover {
+  .ver-persona:hover {
     transform: scale(1.02);
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6), -4px -4px 12px rgba(255, 255, 255, 0.2);
   }
 
-  .personas__titulo {
+  .ver-persona h2 {
     text-align: center;
     color: #f8f9fa;
     font-size: 2em;
   }
 
-  .personas__boton-crear {
-    padding: 0.8rem 1.5rem;
-    font-size: 1em;
-    border: none;
-    border-radius: 10px;
-    background-color: #38ff1e;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .ver-persona p {
+    color: #f8f9fa;
+    font-size: 1.1em;
   }
 
-  .personas__boton-crear:hover {
-    background-color: #4682b4;
+  .ver-persona h3 {
+    color: #f8f9fa;
+    font-size: 1.5em;
+    margin-top: 20px;
   }
 
-  .personas__tabla {
+  .ver-persona table {
     width: 100%;
     max-width: 1000px;
     border-collapse: collapse;
@@ -47,32 +43,33 @@
     box-shadow: inset 2px 5px 10px rgba(5, 5, 5, 0.5);
   }
 
-  .personas__tabla th,
-  .personas__tabla td {
+  .ver-persona th,
+  .ver-persona td {
     padding: 1em;
     text-align: left;
     color: white;
   }
 
-  .personas__tabla th {
+  .ver-persona th {
     background-color: #333;
     font-size: 1.1em;
   }
 
-  .personas__tabla td {
+  .ver-persona td {
     background-color: #171717;
   }
 
-  .personas__tabla tr:hover td {
+  .ver-persona tr:hover td {
     background-color: #333;
   }
 
-  .personas__acciones {
+  .ver-persona .acciones {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
   }
 
-  .personas__boton {
+  .ver-persona .acciones button {
     width: 100px;
     height: 40px;
     font-size: 0.95em;
@@ -83,25 +80,10 @@
     transition: background-color 0.3s ease;
   }
 
-  .personas__boton--ver {
-    background-color: #1e90ff;
+  .ver-persona .acciones .boton-editar {
+    background-color: #FFD700;
   }
 
-  .personas__boton--ver:hover {
-    background-color: #4682b4;
-  }
-
-  .personas__boton--eliminar {
-    background-color: #e62222;
-  }
-
-  .personas__boton--eliminar:hover {
-    background-color: #ff3636;
-  }
-  .personas__boton--editar {
-    background-color:  #FFD700;;
-  }
-
-  .personas__boton--editar:hover {
-    background-color:  #F7DC6F;;
+  .ver-persona .acciones .boton-editar:hover {
+    background-color: #F7DC6F;
   }

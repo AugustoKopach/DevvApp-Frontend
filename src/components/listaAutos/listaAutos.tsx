@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import apiTP from '../../api/apiTP';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,7 +13,7 @@ type Auto = {
 
 const AutosList: React.FC = () => {
   const [autos, setAutos] = useState<Auto[]>([]);
-  const navigate = useNavigate();
+
 
 
   useEffect(() => {
