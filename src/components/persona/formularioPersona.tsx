@@ -1,7 +1,7 @@
 import React from "react";
 import { Genero } from "../../tipos/Persona";
 import type { PersonaDTO } from "../../tipos/Persona";
-import "./FormularioPersona.css";
+import "./formularioPersona.css";
 
 interface FormularioPersonaProps {
   persona: PersonaDTO | null;
