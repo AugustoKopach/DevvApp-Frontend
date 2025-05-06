@@ -5,13 +5,14 @@ import './listaPersonas.css';
 
 type PersonaResumen = {
   id: string;
-  dni:string;
+  dni: string;
   nombre: string;
   apellido: string;
 };
 
 const ListaPersonas: React.FC = () => {
   const [personas, setPersonas] = useState<PersonaResumen[]>([]);
+  const [personaAEliminar, setPersonaAEliminar] = useState<PersonaResumen | null>(null);
   const navigate = useNavigate();
 
   const cargarPersonas = () => {
@@ -24,15 +25,21 @@ const ListaPersonas: React.FC = () => {
     cargarPersonas();
   }, []);
 
-  const eliminarPersona = async (id: string) => {
-    if (!confirm('¿Estás seguro de eliminar esta persona?')) return;
+  const confirmarEliminar = async () => {
+    if (!personaAEliminar) return;
+
     try {
-      await apiTP.delete(`/persona/${id}`);
+      await apiTP.delete(`/persona/${personaAEliminar.id}`);
+      setPersonaAEliminar(null);
       cargarPersonas();
     } catch (error) {
       console.error('Error al eliminar persona', error);
       alert('No se pudo eliminar la persona');
     }
+  };
+
+  const cancelarEliminar = () => {
+    setPersonaAEliminar(null);
   };
 
   const editarPersona = (id: string) => {
@@ -41,7 +48,7 @@ const ListaPersonas: React.FC = () => {
 
   const verPersona = (id: string) => {
     navigate(`/verPersona/${id}`);
-  }
+  };
 
   return (
     <div className="personas__contenedor">
@@ -78,7 +85,7 @@ const ListaPersonas: React.FC = () => {
                   </button>
                   <button
                     className="personas__boton personas__boton--eliminar"
-                    onClick={() => eliminarPersona(p.id)}
+                    onClick={() => setPersonaAEliminar(p)}
                   >
                     Eliminar
                   </button>
@@ -94,6 +101,22 @@ const ListaPersonas: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      {personaAEliminar && (
+        <div className="modal">
+          <div className="modal__contenido">
+            <p>¿Seguro que querés eliminar a <strong>{personaAEliminar.nombre} {personaAEliminar.apellido}</strong>?</p>
+            <div className="modal__acciones">
+              <button className="modal__boton modal__boton--confirmar" onClick={confirmarEliminar}>
+                Confirmar
+              </button>
+              <button className="modal__boton modal__boton--cancelar" onClick={cancelarEliminar}>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

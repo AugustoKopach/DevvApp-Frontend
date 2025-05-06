@@ -22,6 +22,7 @@ const CrearPersona: React.FC = () => {
         color: "",
         numeroChasis: "",
         numeroMotor: "",
+        duenioid:"",
       },
     ],
   });
@@ -86,6 +87,7 @@ const CrearPersona: React.FC = () => {
               color: "",
               numeroChasis: "",
               numeroMotor: "",
+              duenioid:"",
             },
           ],
         };

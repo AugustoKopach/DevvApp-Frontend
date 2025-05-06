@@ -76,7 +76,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: white;
     transition: background-color 0.3s ease;
   }
 
@@ -86,4 +85,11 @@
 
   .ver-persona .acciones .boton-editar:hover {
     background-color: #F7DC6F;
+  }
+  .ver-persona .acciones .boton-eliminar {
+    background-color: #9c0404;
+  }
+
+  .ver-persona .acciones .boton-eliminar:hover {
+    background-color: #c30606;
   }

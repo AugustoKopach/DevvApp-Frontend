@@ -6,4 +6,5 @@ export type Auto = {
     color: string;
     numeroChasis: string;
     numeroMotor: string;
+    duenioid: string;
   };

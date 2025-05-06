@@ -9,6 +9,20 @@ const VerPersona: React.FC = () => {
   const navigate = useNavigate();
   const [persona, setPersona] = useState<PersonaDTO | null>(null);
 
+  const eliminarPersona = () => {
+    if (window.confirm("¿Estás seguro de que querés eliminar esta persona?")) {
+      apiTP.delete(`/persona/${persona?.id}`)
+        .then(() => {
+          alert("Persona eliminada correctamente.");
+          navigate("/personas");
+        })
+        .catch((error) => {
+          console.error("Error al eliminar la persona:", error);
+          alert("No se pudo eliminar la persona.");
+        });
+    }
+  };
+
   useEffect(() => {
     if (id) {
       apiTP.get<PersonaDTO>(`/persona/${id}`)
@@ -64,9 +78,10 @@ const VerPersona: React.FC = () => {
       </table>
 
       <div className="acciones">
-        <button onClick={() => navigate(`/editarPersona/${persona.id}`)}>Editar</button>
-      </div>
-    </div>
+       <button className="boton-editar" onClick={() => navigate(`/editarPersona/${persona.id}`)}>Editar</button>
+       <button className="boton-eliminar" onClick={eliminarPersona}>Eliminar</button>
+     </div>
+     </div>
   );
 };
 
